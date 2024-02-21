@@ -8,19 +8,6 @@ return {
         end
     },
     {
-        "nvim-lua/plenary.nvim",
-        name = "plenary"
-    },
-    { "nvim-telescope/telescope.nvim",
-        dependencies = {
-            "plenary", 
-        }
-    },
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-    },
-    {
         "folke/trouble.nvim",
         config = function()
             -- TODO
