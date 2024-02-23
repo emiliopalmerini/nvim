@@ -1,6 +1,5 @@
 return {
-    'nvim-telescope/telescope.nvim', tag = '0.1.5',
--- or                              , branch = '0.1.x',
+      'nvim-telescope/telescope.nvim', tag = '0.1.5',
       dependencies = { 'nvim-lua/plenary.nvim' },
 
       config = function()
@@ -14,4 +13,4 @@ return {
           end)
           vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
       end
-    }
+}

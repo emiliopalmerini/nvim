@@ -1,12 +1,4 @@
 return {
-    "folke/tokyonight.nvim",
-    {
-        'rose-pine/neovim',
-        name = 'rose-pine',
-        config = function()
-            vim.cmd('colorscheme rose-pine')
-        end
-    },
     {
         "folke/trouble.nvim",
         config = function()
@@ -21,8 +13,6 @@ return {
       "folke/zen-mode.nvim",
       --"github/copilot.vim",
       "eandrju/cellular-automaton.nvim",
-      "laytan/cloak.nvim",
-      "theprimeagen/harpoon",
       "theprimeagen/refactoring.nvim",
       "theprimeagen/vim-be-good",
       "epwalsh/obsidian.nvim"
