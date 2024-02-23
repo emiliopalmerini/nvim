@@ -1,21 +1,7 @@
 return {
-    {
-        "folke/trouble.nvim",
-        config = function()
-            -- TODO
-            require("trouble").setup {
-                icons = false,
-            }
-        end
-    },
-      "mbbill/undotree",
-      "tpope/vim-fugitive",
-      "folke/zen-mode.nvim",
       --"github/copilot.vim",
       "eandrju/cellular-automaton.nvim",
-      "theprimeagen/refactoring.nvim",
       "theprimeagen/vim-be-good",
-      "epwalsh/obsidian.nvim"
 }
 --[[
 {
