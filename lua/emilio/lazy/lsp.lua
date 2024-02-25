@@ -11,7 +11,13 @@ return{
             ensure_installed = {
                 "lua_ls",
                 "golangci_lint_ls",
+                "jedi_language_server",
             },
+            handlers = {
+                function(server_name)
+                    require("lspconfig")[server_name].setup {}
+                end
+            }
         })
 
     end
