@@ -1,22 +1,7 @@
---[[ local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
-})
-
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
-})
---]]
 return{
     "neovim/nvim-lspconfig",
     dependencies = {
+        "j-hui/fidget.nvim",
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         'hrsh7th/cmp-nvim-lsp',
@@ -29,6 +14,7 @@ return{
     },
 
     config = function()
+        require("fidget").setup({})
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
@@ -39,9 +25,56 @@ return{
             handlers = {
                 function(server_name)
                     require("lspconfig")[server_name].setup {}
+                end,
+                ["lua_ls"] = function ()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.lua_ls.setup {
+                        settings = {
+                            Lua = {
+                                diagnostics = {
+                                    globals = { "vim" }
+                                }
+                            }
+                        }
+                    }
+
                 end
+
             }
         })
+        local cmp = require("cmp")
+        local cmp_select = {behavior = cmp.SelectBehavior.Select}
+        cmp.setup({
+            snippet = {
+                expand = function(args)
+                    require('luasnip').lsp_expand(args.body)
+                end,
+            },
+            mapping = cmp.mapping.preset.insert({
+                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                ["<C-Space>"] = cmp.mapping.complete(),
+            }),
+            sources = cmp.config.sources({
+                { name = 'nvim_lsp' },
+                { name = 'luasnip' },
+            },
+                {
+                    { name = 'buffer' },
+                })
+        })
 
+        vim.diagnostic.config({
+            update_in_insert = true,
+            float = {
+                focusable = false,
+                style = "minimal",
+                border = "rounded",
+                source = "always",
+                header = "",
+                prefix = "",
+            },
+        })
     end
 }
