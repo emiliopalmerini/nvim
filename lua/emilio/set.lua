@@ -10,7 +10,10 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
-vim.opt.hlsearch = false
+-- set search and use esc to remove highlights
+vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
 vim.opt.incsearch = true
 
 vim.opt.scrolloff = 8
