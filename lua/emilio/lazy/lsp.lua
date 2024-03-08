@@ -21,6 +21,7 @@ return{
                 "lua_ls",
                 "gopls",
                 "jedi_language_server",
+                "omnisharp"
             },
             handlers = {
                 function(server_name)
