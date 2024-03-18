@@ -28,7 +28,7 @@ return {
                 },
 
                 mappings = {
-                    ["gf"] = {
+                    ["gd"] = {
                         action = function()
                             return require("obsidian").util.gf_passthrough()
                         end,
