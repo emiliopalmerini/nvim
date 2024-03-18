@@ -18,13 +18,6 @@ return {
         vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
         vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-        vim.keymap.set('n', '<leader>sgw', function()
-            local word = vim.fn.expand("<cword>")
-            builtin.grep_string({ search = word })
-        end,
-            { desc = '[S]earch with [G]rep [W]ord under cursor' }
-        )
-
         -- Slightly advanced example of overriding default behavior and theme
         vim.keymap.set('n', '<leader>/', function()
             -- You can pass additional configuration to telescope to change theme, layout, etc.
