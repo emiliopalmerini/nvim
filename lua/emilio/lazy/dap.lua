@@ -1,7 +1,14 @@
 return {
     {
         "mfussenegger/nvim-dap",
-        dependencies = {},
+        dependencies = {
+            {
+                "leoluz/nvim-dap-go"
+            },
+            "rcarriga/nvim-dap-ui",
+            "theHamsta/nvim-dap-virtual-text",
+            "nvim-telescope/telescope-dap.nvim",
+        },
         config = function ()
             vim.keymap.set("n", "<F1>", ":lua require'dap'.continue()<CR>", {buffer=0})
             vim.keymap.set("n", "<F2>", ":lua require'dap'.step_over()<CR>", {buffer=0})
